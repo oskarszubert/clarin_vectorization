@@ -1,0 +1,5 @@
+## The following requirements were added by pip freeze:
+et-xmlfile==1.0.1
+urllib3==1.25.9
+pandas==1.0.1
+sklearn==0.0

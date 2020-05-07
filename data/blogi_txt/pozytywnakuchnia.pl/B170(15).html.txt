@@ -1,0 +1,1 @@
+( ; if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);         else load_cmc(); 

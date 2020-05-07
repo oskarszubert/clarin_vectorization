@@ -1,0 +1,1 @@
+To jest przykładowa strona WordPressa. Możesz ją zmodyfikować, aby umieścić tu informacje o sobie lub swojej stronie, by czytelnicy wiedzieli, kim jesteś. Możesz utworzyć takich stron ile tylko zechcesz, możesz również tworzyć podstrony i zarządzać wszystkim z poziomu panelu administracyjnego WordPressa. 

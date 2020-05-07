@@ -1,0 +1,1 @@
+var dd_offset_from_content = 40;var dd_top_offset_from_content = 0;var dd_override_start_anchor_id = "";var dd_override_top_offset = "";  Zobacz równieżCiąża – jak ją znoszę?Legginsy – hit czy kit?Żółty – obowiązkowy kolor w sezonie wiosna/lato 2014Dr. Organic – naturalne i ekologiczne kosmetykiŻel pod prysznic Kamill – warto wypróbować! 
