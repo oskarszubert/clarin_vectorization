@@ -48,4 +48,6 @@ if __name__ == '__main__':
     morfo.jgn = False
 
     dataset = morfo.create_vocab_and_new_dataset_from_excel(path_to_dataset=PATH_TO_DATASET, vocab_size=VOCAB_SIZE)
-    morfo.vectorize_data(dataset)
+
+    filename = str(VOCAB_SIZE) + '_data_'
+    morfo.vectorize_data(dataset,filename)

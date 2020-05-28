@@ -243,7 +243,7 @@ class Morphosyntactic:
             self.vocabulary[tag] = 1
 
 
-    def vectorize_data(self, dataset):
+    def vectorize_data(self, dataset, filename):
         sorted_keys = list(self.vocabulary.keys())
         sorted_keys.sort()
         bow_dataset = []
@@ -274,14 +274,14 @@ class Morphosyntactic:
             tf_idf_dataset.append( [row_class, tf_idf_vector] )
 
 
-        self.save_dataset_to_excel(dataset=bow_dataset, dir_name='bow', columns=list(sorted_keys))
-        self.save_dataset_to_excel(dataset=binary_dataset, dir_name='binary', columns=list(sorted_keys))
-        self.save_dataset_to_excel(dataset=tf_dataset, dir_name='tf', columns=list(sorted_keys))
-        self.save_dataset_to_excel(dataset=tf_idf_dataset, dir_name='tf_idf', columns=list(sorted_keys))
+        self.save_dataset_to_file(dataset=bow_dataset, method_name=filename+'bow', columns=list(sorted_keys))
+        self.save_dataset_to_file(dataset=binary_dataset, method_name=filename+'binary', columns=list(sorted_keys))
+        self.save_dataset_to_file(dataset=tf_dataset, method_name=filename+'tf', columns=list(sorted_keys))
+        self.save_dataset_to_file(dataset=tf_idf_dataset, method_name=filename+'tf_idf', columns=list(sorted_keys))
 
 
-    def save_dataset_to_excel(self, dataset, dir_name, columns):
-        path = os.path.join(self.path_to_data,'datasets',dir_name)
+    def save_dataset_to_file(self, dataset, method_name, columns):
+        path = os.path.join(self.path_to_data,'datasets')
         if not os.path.exists( path ):
             os.makedirs( path )
 
@@ -295,9 +295,10 @@ class Morphosyntactic:
         df = pd.DataFrame(tmp_dataset,columns=columns)
         df = shuffle(df)
 
+        filename = method_name + '.csv'
+        print(f'Saving data into: {os.path.join(path,filename)}')
+        df.to_csv(os.path.join(path,filename),index=False, sep=',')
 
-        print(f'Saving data into: {path}')
-        df.to_excel(os.path.join(path,'data.xlsx'),index=False)
         df.iloc[0:0]
         dataset = []
 
@@ -321,4 +322,3 @@ class Morphosyntactic:
             if vector[tag]:
                 vector[tag] = vector[tag] * self.vocabulary[tag][2]
         return vector
-
