@@ -1,8 +1,11 @@
 import pandas as pd
 from sklearn.utils import resample
+from sklearn.model_selection import train_test_split
 
 
-def balance_dataset(df):
+def balance_dataset(df, df_y):
+    df.insert(0, "value", df_y, True) 
+
     single_label_df_list = []
     class_labels = set(df['value'])
     for label in class_labels:
@@ -25,4 +28,18 @@ def balance_dataset(df):
     for tmp_df in single_label_df_list:
         df = pd.concat( [df, tmp_df] )
 
-    return df
+    X = df.drop(columns=['value'])
+    Y = df['value'].values
+
+    return X, Y
+
+
+# EXAMPLE USAGE:
+# if __name__ == '__main__':
+#     filename = 'data.csv'
+#     df = pd.read_csv(filename, sep=',')
+#     print('before:', df.shape)
+#     X = df.drop(columns=['value'])
+#     Y = df['value'].values
+#     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3)
+#     X_train, Y_train = balance_dataset(X_train, Y_train)
